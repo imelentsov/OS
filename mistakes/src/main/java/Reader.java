@@ -1,4 +1,4 @@
-import java.io.BufferedReader;
+п»їimport java.io.BufferedReader;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,12 +19,12 @@ import com.google.common.collect.TreeMultiset;
 public class Reader {
 	private TreeMultiset<DeliriumInteger> numbers =  TreeMultiset.create();
 	
-	private static final String NOT_DIR_PATTERN = "Директория \'%s\' не существует.";
-	private static final String ACCESS_DIR_PATTERN = "Доступ к директории \'%s\' запрещен.";
-	private static final String BAD_FILE = "Невозможно открыть файл или прочитать из него.";
-	private static final String NO_MEM = "Память кончилась.";
-	private static final String EXC_PATTERN = "Ошибка: \'%s\'\nСтек трейс:\n \"%s\"";
-	private static final String VIRTUAL_EXC_PATTERN = "Ошибка виртуальной машины: \'%s\'";
+	private static final String NOT_DIR_PATTERN = "Р”РёСЂРµРєС‚РѕСЂРёСЏ \'%s\' РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. ";
+	private static final String ACCESS_DIR_PATTERN = "Р”РѕСЃС‚СѓРї Рє РґРёСЂРµРєС‚РѕСЂРёРё \'%s\' Р·Р°РїСЂРµС‰РµРЅ. ";
+	private static final String BAD_FILE = "РќРµРІРѕР·РјРѕР¶РЅРѕ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РёР»Рё РїСЂРѕС‡РёС‚Р°С‚СЊ РёР· РЅРµРіРѕ. ";
+	private static final String NO_MEM = "РџР°РјСЏС‚СЊ РєРѕРЅС‡РёР»Р°СЃСЊ. ";
+	private static final String EXC_PATTERN = "РћС€РёР±РєР°: \'%s\'\nРЎС‚РµРє С‚СЂРµР№СЃ:\n \"%s\" ";
+	private static final String VIRTUAL_EXC_PATTERN = "РћС€РёР±РєР° РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ РјР°С€РёРЅС‹: \'%s\' ";
 	
 	public static void main(String[] args) {
 		Reader reader = new Reader();
@@ -41,8 +41,8 @@ public class Reader {
 	}
 
 	/**
-	 * Идет по всем файлам и папкам в заданной директоории, находит и сортирует числа
-	 * находящиеся в них.
+	 * РРґРµС‚ РїРѕ РІСЃРµРј С„Р°Р№Р»Р°Рј Рё РїР°РїРєР°Рј РІ Р·Р°РґР°РЅРЅРѕР№ РґРёСЂРµРєС‚РѕРѕСЂРёРё, РЅР°С…РѕРґРёС‚ Рё СЃРѕСЂС‚РёСЂСѓРµС‚ С‡РёСЃР»Р° 
+	 * РЅР°С…РѕРґСЏС‰РёРµСЃСЏ РІ РЅРёС…. 
 	 * @param directory
 	 * @return
 	 */
@@ -71,7 +71,7 @@ public class Reader {
 	}
 
 	/**
-	 * обрабатывает очередную строчку файла
+	 * РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РѕС‡РµСЂРµРґРЅСѓСЋ СЃС‚СЂРѕС‡РєСѓ С„Р°Р№Р»Р° 
 	 * @return
 	 */
 	private void processLine(String line) {
@@ -85,8 +85,8 @@ public class Reader {
 	}
 
 	/**
-	 * обрабатывает очередной файл
-	 * @throws IOException - если файл не открылся или не удалось получить очередную строчку
+	 * РѕР±СЂР°Р±Р°С‚С‹РІР°РµС‚ РѕС‡РµСЂРµРґРЅРѕР№ С„Р°Р№Р» 
+	 * @throws IOException - РµСЃР»Рё С„Р°Р№Р» РЅРµ РѕС‚РєСЂС‹Р»СЃСЏ РёР»Рё РЅРµ СѓРґР°Р»РѕСЃСЊ РїРѕР»СѓС‡РёС‚СЊ РѕС‡РµСЂРµРґРЅСѓСЋ СЃС‚СЂРѕС‡РєСѓ 
 	 */
 	private void processFile(File file) throws IOException {
 		BufferedReader curFileReader = new DeliriumReader(new FileReader(file));
