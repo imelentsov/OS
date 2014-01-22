@@ -1,11 +1,10 @@
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Scanner;
 
 import com.google.common.collect.Maps;
 
@@ -333,12 +332,11 @@ public class FileSystem {
 				}
 			}
 		}
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		Scanner reader = new Scanner(System.in);
 		String line;
 		String[] parts;
 		while(true){
-			if(reader.ready()){
-				line = reader.readLine();
+				line = reader.nextLine();
 				if(line.equals("exit")){
 					System.exit(0);
 				}else if(line.equals("dir")){
@@ -349,9 +347,9 @@ public class FileSystem {
 				if(parts[0].equals("cut")){
 					if(parts[1].charAt(0) == '>'){
 						if(parts[1].charAt(1) == '>'){
-							fs.appendToFile(parts[1].substring(2), reader.readLine() + "\n");
+							fs.appendToFile(parts[1].substring(2), reader.nextLine());
 						}else{
-							fs.writeToFile(parts[1].substring(1), reader.readLine() + "\n");
+							fs.writeToFile(parts[1].substring(1), reader.nextLine());
 						}
 					}else{
 						System.out.println(fs.readFile(parts[1]));
@@ -368,7 +366,6 @@ public class FileSystem {
 					fs.loadFileSystem(new File(parts[1]));
 				}
 			}
-		}
 	}
 
 	private static int getUnsignedByteValue(byte b) {
